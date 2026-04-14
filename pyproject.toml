@@ -1,0 +1,24 @@
+[project]
+name = "ansi-vt100"
+version = "0.1.0"
+description = "Terminal-based ANSI/VT100 byte-stream viewer and debugger"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Brad Colbert", email = "brad.colbert@pelican-labs.com"},
+]
+keywords = ["ansi", "vt100", "terminal", "curses", "cp437", "bbs"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Networking",
+    "Topic :: Terminals",
+]
+
+[project.scripts]
+ansi-vt100 = "vt100_viewer_live:main"
