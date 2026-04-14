@@ -1,6 +1,8 @@
 # ansi_vt100
 
 A terminal-based ANSI / VT100 byte-stream viewer built with Python and curses.
+This is a tool that you can use to inspect an ANSI/VT100 stream stored in a file.
+Developed on Linux so I'm unsure how well it will do on Windows or MacOS.
 
 <img width="600" height="701" alt="Screenshot from 2026-04-14 08-30-17" src="https://github.com/user-attachments/assets/1ecc3af3-7ea1-4151-a40f-7e77456c7389" />
 
@@ -19,6 +21,7 @@ A terminal-based ANSI / VT100 byte-stream viewer built with Python and curses.
 - Python 3.10+
 - A terminal with CP437-compatible font (most Linux terminal emulators)
 - No external dependencies — uses only the Python standard library
+- Linux (debian): fonts-pc, fonts-pc-extra
 
 ## Installation
 
