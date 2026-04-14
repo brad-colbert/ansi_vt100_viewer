@@ -634,11 +634,11 @@ ANSI_BG_MAP = {0: '40', 1: '41', 2: '42', 3: '43', 4: '44', 5: '45', 6: '46', 7:
 
 def draw_screen_cells_direct(fd: int, screen: ScreenBuffer, top_row: int, left_col: int,
                              visible_rows: int, visible_cols: int) -> None:
-    """Write screen cells directly to terminal using ANSI escapes, bypassing curses."""
-    buf: List[str] = []
+    """Write screen cells directly to terminal as raw bytes, bypassing curses."""
+    buf = bytearray()
     prev_sgr: Optional[str] = None
     for r in range(visible_rows):
-        buf.append(f"\033[{top_row + r};{left_col}H")
+        buf.extend(f"\033[{top_row + r};{left_col}H".encode('ascii'))
         prev_sgr = None
         for c in range(visible_cols):
             cell = screen.cells[r][c]
@@ -654,11 +654,11 @@ def draw_screen_cells_direct(fd: int, screen: ScreenBuffer, top_row: int, left_c
                 codes.append(ANSI_BG_MAP.get(cell.bg, '40'))
             sgr = ';'.join(codes) if codes else '0'
             if sgr != prev_sgr:
-                buf.append(f"\033[{sgr}m")
+                buf.extend(f"\033[{sgr}m".encode('ascii'))
                 prev_sgr = sgr
-            buf.append(cell.ch)
-    buf.append('\033[0m')
-    os.write(fd, ''.join(buf).encode('utf-8'))
+            buf.append(cell.raw_byte if cell.raw_byte is not None else 0x20)
+    buf.extend(b'\033[0m')
+    os.write(fd, bytes(buf))
 
 
 def draw_screen(win: curses.window, screen: ScreenBuffer, term_fd: int) -> None:
