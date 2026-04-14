@@ -2,7 +2,7 @@
 
 A terminal-based ANSI / VT100 byte-stream viewer built with Python and curses.
 
-![4d_telephonics sample](https://raw.githubusercontent.com/bradcolbert/ansi_vt100/main/samples/4d_telephonics.ansi)
+<img width="600" height="701" alt="Screenshot from 2026-04-14 08-30-17" src="https://github.com/user-attachments/assets/1ecc3af3-7ea1-4151-a40f-7e77456c7389" />
 
 ## Features
 
